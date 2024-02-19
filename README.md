@@ -70,3 +70,44 @@ classDiagram
     Player "1" --> "*" Prestige : owns
     Database "1" --> "1" Player : contains
 ```
+
+
+###########################################################
+
+Main Data structure UML:
+
+```mermaid
+classDiagram
+    class ClickerCounter {
+        - int clicks
+        + ClickerCounter()
+        + incrementClicks(): void
+        + getClicks(): int
+    }
+    class AutoClickerMachine {
+        - int cps
+        + AutoClickerMachine(cps: int)
+        + getCPS(): int
+    }
+    class MachineUpgrade {
+        - String upgradeName
+        - int upgradeCost
+        - int cpsIncrease
+        + MachineUpgrade(upgradeName: String, upgradeCost: int, cpsIncrease: int)
+        + getUpgradeName(): String
+        + getUpgradeCost(): int
+        + getCPSIncrease(): int
+    }
+    class Database {
+        - int playerId
+        - String playerName
+        - int totalOres
+        - int clickValue
+        - int autoCPS
+        - int totalClicks
+        - int totalAutoClicks
+        + Database()
+        + savePlayerData(player: Player): void
+        + loadPlayerData(playerId: int): Player
+    }
+```
