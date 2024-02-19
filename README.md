@@ -12,7 +12,7 @@ V     V     V     V     V
 
 ###########################################################
 
-<u><strong>Main program UML:</strong></u>
+**Main program UML:**
 
 
 ```mermaid
@@ -83,7 +83,7 @@ classDiagram
 
 ###########################################################
 
-__**Main Data structure UML:**__
+**Main Data structure UML:**
 
 ```mermaid
 classDiagram
