@@ -12,7 +12,7 @@ V     V     V     V     V
 
 ###########################################################
 
-<u>**Main program UML**:</u>
+<u><strong>Main program UML:</strong></u>
 
 
 ```mermaid
