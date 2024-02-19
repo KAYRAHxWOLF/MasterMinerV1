@@ -1,1 +1,72 @@
-# MasterMinerV1
+# Master Miner V1
+
+
+###########################################################
+
+Main program UML:
+
+
+```mermaid
+classDiagram
+    class Player {
+        - String playerName
+        - int totalOres
+        - int clickValue
+        - int autoCPS
+        - int totalClicks
+        - int totalAutoClicks
+        - List<Upgrade> upgrades
+        - List<Booster> boosters
+        - List<Prestige> prestiges
+        + Player(playerName: String)
+        + clickMine(): void
+        + addAutoCPS(cps: int): void
+        + getTotalOres(): int
+        + getTotalClicks(): int
+        + getTotalAutoClicks(): int
+        + getClickValue(): int
+        + getAutoCPS(): int
+        + purchaseUpgrade(upgrade: Upgrade): void
+        + purchaseBooster(booster: Booster): void
+        + resetPlayer(): void
+    }
+    class Upgrade {
+        - String upgradeName
+        - int upgradeCost
+        - int clickValueIncrease
+        - int autoCPSIncrease
+        + Upgrade(upgradeName: String, upgradeCost: int, clickValueIncrease: int, autoCPSIncrease: int)
+        + getUpgradeName(): String
+        + getUpgradeCost(): int
+        + getClickValueIncrease(): int
+        + getAutoCPSIncrease(): int
+    }
+    class Booster {
+        - String boosterName
+        - int boosterCost
+        - int boosterMultiplier
+        + Booster(boosterName: String, boosterCost: int, boosterMultiplier: int)
+        + getBoosterName(): String
+        + getBoosterCost(): int
+        + getBoosterMultiplier(): int
+    }
+    class Prestige {
+        - String prestigeName
+        - int prestigeCost
+        - int prestigeMultiplier
+        + Prestige(prestigeName: String, prestigeCost: int, prestigeMultiplier: int)
+        + getPrestigeName(): String
+        + getPrestigeCost(): int
+        + getPrestigeMultiplier(): int
+     } 
+      class Database { 
+      + Database() 
+      + savePlayerData(player: Player): void 
+      + loadPlayerData(playerName: String, password: String): Player
+    }
+
+    Player "1" --> "*" Upgrade : owns
+    Player "1" --> "*" Booster : owns
+    Player "1" --> "*" Prestige : owns
+    Database "1" --> "1" Player : contains
+```
