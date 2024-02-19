@@ -21,6 +21,7 @@
                 "\nBuy Boosters: Press B to open (BoosterShopMenue)" +
                 "\nOpen menue: (Save file, Exit, Settings, back)");
 
+            //cursor invisible
             Console.SetCursorPosition(0, 1);
             Console.CursorVisible = false;
             CounterAutomater(); // starts clocked code alongside following code
