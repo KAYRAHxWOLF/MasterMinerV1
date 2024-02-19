@@ -6,9 +6,15 @@ A collaboration will happen in GEOMETRY DASH as level and visual of this game am
 
 You may dont want to copy my code since its not 100% working but for reviews and Concept stealing its allowed XD.
 
+
+
+
+
+
 Task 1. UML-Milestone (create an UML-Diagram)
 |     |     |     |     |
 V     V     V     V     V
+
 
 ############################################
 
