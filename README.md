@@ -13,10 +13,7 @@ You may dont want to copy my code since its not 100% working but for reviews and
 
 Task 1. UML-Milestone (create an UML-Diagram)
 
-|     |     |     |     |
-
-V     V     V     V     V
-
+V V V V V V V V V V V V V V V V V V V V V
 
 ############################################
 
