@@ -32,6 +32,8 @@ namespace MasterMiner
             1250000000, 1500000000, 1750000000, 2000000000, 2500000000, 5000000000, 10000000000, 25000000000, 50000000000,
             100000000000
         };
+        private long upgradeClickCost = 1000000;
+//a few changes must happen here
         private long prestigeCost = 10000000000000;
         private long overallIncomeMultiplier = 1;
         private bool loggedIn = false;
@@ -57,10 +59,11 @@ namespace MasterMiner
             Console.Clear();
             Console.WriteLine($"Total Ores: {ores}      Cps={cps}\n" +
                               "########################################################\n" +
-                              "Upgrade Click: Press C Cost=(ClickerUpgradeCost_value)\n" +
-                              "Upgrade machines: Press M Cost=(MachineUpgradeCost_value)\n" +
-                              "Buy Boosters: Press B to open (BoosterShopMenue)\n" +
-                              "Open menue: (Save file, Exit, Settings, back)");
+                              "Upgrade Click: C " +
+                              "Upgrade machines: M\n" +
+                              "Booster Shop: B\n" +
+                              "Open Game menue: Y\n" +
+                              "Log out: Q");
             Console.CursorVisible = false;
         }
 
@@ -80,13 +83,16 @@ namespace MasterMiner
                         }
                         break;
                     case ConsoleKey.C:
-                        OpenUpgradeMenu();
+                        OpenUpgradeClickMenu();
                         break;
                     case ConsoleKey.M:
                         OpenMachineUpgradeMenu();
                         break;
                     case ConsoleKey.B:
                         OpenBoosterShop();
+                        break;
+                    case ConsoleKey.Y:
+                        OpenGameMenue();
                         break;
                     default:
                         break;
@@ -103,31 +109,125 @@ namespace MasterMiner
             ores += cps * overallIncomeMultiplier;
         }
 
-        private void OpenUpgradeMenu()
+        private void OpenUpgradeClickMenu()
         {
-            // Implementieren Sie Logik für das Upgrade-Menü hier
-            // Beispiel: Console.WriteLine("Upgrade-Menü geöffnet!");
+            Console.WriteLine("Upgrade Click-Menü geöffnet!");
+            Console.WriteLine("Optionen:");
+            Console.WriteLine("1. Upgrade Clicker: Kosten = X Erze, CPS-Boost = Y");
+            Console.WriteLine("2. Zurück");
+            var input = Console.ReadLine();
+            switch (input)
+            {
+                case "1":
+                    UpgradeClicker();
+                    break;
+                case "2":
+                    // Zurück zum Hauptmenü
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe.");
+                    break;
+            }
+        }
+
+        private void UpgradeClicker()
+        {
+            // Hier fügst du die Logik hinzu, um den Clicker zu verbessern
+            if (ores >= upgradeClickCost)
+            {
+                ores -= upgradeClickCost;
+                cps++;
+                Console.WriteLine("Clicker erfolgreich verbessert!");
+            }
+            else
+            {
+                Console.WriteLine("Nicht genug Erze für das Upgrade.");
+            }
         }
 
         private void OpenMachineUpgradeMenu()
         {
-            // Implementieren Sie Logik für das Maschinen-Upgrade-Menü hier
-            // Beispiel: Console.WriteLine("Maschinen-Upgrade-Menü geöffnet!");
+            Console.WriteLine("Maschinen-Upgrade-Menü geöffnet!");
+            Console.WriteLine("Optionen:");
+            Console.WriteLine("1. Maschine 1: Kosten = X Erze, CPS-Boost = Y");
+            Console.WriteLine("2. Maschine 2: Kosten = X Erze, CPS-Boost = Y");
+            Console.WriteLine("3. Zurück");
+            var input = Console.ReadLine();
+            switch (input)
+            {
+                case "1":
+                    // Implementiere Logik für Maschine 1-Upgrade
+                    break;
+                case "2":
+                    // Implementiere Logik für Maschine 2-Upgrade
+                    break;
+                case "3":
+                    // Zurück zum Hauptmenü
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe.");
+                    break;
+            }
         }
 
         private void OpenBoosterShop()
         {
-            // Implementieren Sie Logik für den Booster-Shop hier
-            // Beispiel: Console.WriteLine("Booster-Shop geöffnet!");
+            Console.WriteLine("Booster-Shop geöffnet!");
+            Console.WriteLine("Optionen:");
+            Console.WriteLine("1. Booster 1: Kosten = X Erze, Boost = Y");
+            Console.WriteLine("2. Booster 2: Kosten = X Erze, Boost = Y");
+            Console.WriteLine("3. Zurück");
+            var input = Console.ReadLine();
+            switch (input)
+            {
+                case "1":
+                    // Implementiere Logik für Booster 1-Kauf
+                    break;
+                case "2":
+                    // Implementiere Logik für Booster 2-Kauf
+                    break;
+                case "3":
+                    // Zurück zum Hauptmenü
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe.");
+                    break;
+            }
         }
 
+        private void OpenGameMenue()
+        {
+            Console.WriteLine("-Spiel Menü-");
+            Console.WriteLine("Optionen:");
+            Console.WriteLine("Einstellungen: X");
+            Console.WriteLine("Spiel speichern: S");
+            Console.WriteLine("Zurück zum spiel: V");
+            var input = Console.ReadLine();
+            switch (input)
+            {
+                case "X":
+                    // Implementiere Logik für Einstellungen-Menü
+                    break;
+                case "S":
+                    SaveGame();
+                    break;
+                case "V":
+                    
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe.");
+                    break;
+            }
+        }
         private async Task SaveGame()
         {
-            // Implementieren Sie Logik zum Speichern des Spiels hier
+            // how to Logik zum Speichern des Spiels ?
         }
 
         private void ExitGame()
         {
+            Console.WriteLine("Das Spiel wird beendet...(Drücken die eine zufällige taste)");
+            Console.ReadKey();
             Environment.Exit(0);
         }
 
