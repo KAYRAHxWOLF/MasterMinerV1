@@ -42,15 +42,15 @@ namespace MasterMiner
         {
             Console.WriteLine("Willkommen bei Master Miner!");
 
-            // Anmeldungs- oder Registrierungsfunktion aufrufen
+            
             LoginOrRegister();
 
-            // Hauptspiel-Loop
+            
             while (true)
             {
                 UpdateConsole();
                 HandleInput();
-                Thread.Sleep(100); // Kurze Verzögerung für Aktualisierung
+                Thread.Sleep(100); //  Aktualisierung
             }
         }
 

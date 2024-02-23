@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterMinerV1", "MasterMinerV1\MasterMinerV1.csproj", "{F07165F0-6396-4656-A1F0-8A01428D2279}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterMinerV1", "MasterMinerV1\MasterMinerV1.csproj", "{F07165F0-6396-4656-A1F0-8A01428D2279}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
