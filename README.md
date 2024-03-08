@@ -56,8 +56,6 @@ classDiagram
     }
 
     Player "1" --> "*" Upgrade : owns
-    Player "1" --> "*" Booster : owns
-    Player "1" --> "*" Prestige : owns
     Database "1" --> "1" Player : contains
 ```
 
