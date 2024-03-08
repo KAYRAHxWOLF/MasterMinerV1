@@ -33,53 +33,22 @@ classDiagram
         - String playerName
         - int totalOres
         - int clickValue
-        - int autoCPS
         - int totalClicks
-        - int totalAutoClicks
         - List<Upgrade> upgrades
-        - List<Booster> boosters
-        - List<Prestige> prestiges
         + Player(playerName: String)
         + clickMine(): void
-        + addAutoCPS(cps: int): void
-        + getTotalOres(): int
-        + getTotalClicks(): int
-        + getTotalAutoClicks(): int
         + getClickValue(): int
-        + getAutoCPS(): int
         + purchaseUpgrade(upgrade: Upgrade): void
-        + purchaseBooster(booster: Booster): void
-        + resetPlayer(): void
     }
     class Upgrade {
         - String upgradeName
         - int upgradeCost
         - int clickValueIncrease
-        - int autoCPSIncrease
-        + Upgrade(upgradeName: String, upgradeCost: int, clickValueIncrease: int, autoCPSIncrease: int)
+        + Upgrade(upgradeName: String, upgradeCost: int, clickValueIncrease: int,)
         + getUpgradeName(): String
         + getUpgradeCost(): int
         + getClickValueIncrease(): int
-        + getAutoCPSIncrease(): int
     }
-    class Booster {
-        - String boosterName
-        - int boosterCost
-        - int boosterMultiplier
-        + Booster(boosterName: String, boosterCost: int, boosterMultiplier: int)
-        + getBoosterName(): String
-        + getBoosterCost(): int
-        + getBoosterMultiplier(): int
-    }
-    class Prestige {
-        - String prestigeName
-        - int prestigeCost
-        - int prestigeMultiplier
-        + Prestige(prestigeName: String, prestigeCost: int, prestigeMultiplier: int)
-        + getPrestigeName(): String
-        + getPrestigeCost(): int
-        + getPrestigeMultiplier(): int
-     } 
       class Database { 
       + Database() 
       + savePlayerData(player: Player): void 
@@ -107,28 +76,10 @@ classDiagram
         + incrementClicks(): void
         + getClicks(): int
     }
-    class AutoClickerMachine {
-        - int cps
-        + AutoClickerMachine(cps: int)
-        + getCPS(): int
-    }
-    class MachineUpgrade {
-        - String upgradeName
-        - int upgradeCost
-        - int cpsIncrease
-        + MachineUpgrade(upgradeName: String, upgradeCost: int, cpsIncrease: int)
-        + getUpgradeName(): String
-        + getUpgradeCost(): int
-        + getCPSIncrease(): int
-    }
     class Database {
-        - int playerId
         - String playerName
         - int totalOres
         - int clickValue
-        - int autoCPS
-        - int totalClicks
-        - int totalAutoClicks
         + Database()
         + savePlayerData(player: Player): void
         + loadPlayerData(playerId: int): Player
