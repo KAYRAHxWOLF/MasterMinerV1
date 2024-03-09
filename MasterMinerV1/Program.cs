@@ -76,7 +76,7 @@ namespace MasterMiner
 
         public int GetUpgradeCost()
         {
-            long index = clickValueIncrease / 10; // Annehmen, dass Kosten linear mit clickValueIncrease steigen
+            long index = clickValueIncrease / 10; 
             long[] upgradeCosts = new long[]
             {
                 25, 50, 100, 250, 500, 750, 1000, 1250, 1500, 1750,
@@ -94,7 +94,7 @@ namespace MasterMiner
 
             if (index >= upgradeCosts.Length)
             {
-                Console.WriteLine("Maximale Upgrades erreicht!");
+                Console.WriteLine("Max Upgrades !");
                 return int.MaxValue;
             }
 
@@ -104,9 +104,9 @@ namespace MasterMiner
 
 
         public int GetClickValueIncrease()
-            {
-            return clickValueIncrease;
-            }
+        {
+        return clickValueIncrease;
+        }
     }
 
     internal class Database
@@ -185,10 +185,13 @@ namespace MasterMiner
 
         private void OpenUpgradeClickMenu()
         {
-            Console.WriteLine("Upgrade Click-Menü geöffnet!");
-            Console.WriteLine("Optionen:");
-            Console.WriteLine($"1. Upgrade Clicker: Kosten = {CalculateUpgradeCost()} Ores");
-            Console.WriteLine("2. Zurück");
+            Console.WriteLine("########################################################");
+            Console.WriteLine("Upgrade Click-Menu !");
+            Console.WriteLine("Options:");
+            Console.WriteLine($"1. Upgrade Clicker: Cost = {CalculateUpgradeCost()} Ores");
+            Console.WriteLine("2. Back");
+            Console.WriteLine("########################################################");
+            Console.WriteLine("input:");
             var input = Console.ReadLine();
             switch (input)
             {
@@ -245,7 +248,7 @@ namespace MasterMiner
 
         private void ExitGame()
         {
-            Console.WriteLine("Das Spiel wird beendet...(Drücken Sie eine beliebige Taste)");
+            Console.WriteLine("The Game has ended!...(press any button to end)");
             Console.ReadKey();
             Environment.Exit(0);
         }
