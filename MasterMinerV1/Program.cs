@@ -1,9 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 namespace MasterMiner
 {
+
+
+
+
+
+
+
+    // MAIN GAME START
     internal class Program
     {
         static void Main(string[] args)
@@ -15,6 +27,21 @@ namespace MasterMiner
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// UML PLAYER
     internal class Player
     {
         public string playerName;
@@ -56,6 +83,27 @@ namespace MasterMiner
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// UML UPGRADE
     internal class Upgrade
     {
         private string upgradeName;
@@ -109,7 +157,44 @@ namespace MasterMiner
         }
     }
 
-    internal class Database
+
+
+
+
+
+
+// UML ClickerCounter
+    internal class ClickerCounter
+    {
+        private int clicks;
+
+        public ClickerCounter()
+        {
+            clicks = 0;
+        }
+
+        public void incrementClicks()
+        {
+            clicks++;
+        }
+
+        public int getClicks()
+        {
+            return clicks;
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+// UML DATABASE
+internal class Database
     {
         public Database()
         {
@@ -129,14 +214,37 @@ namespace MasterMiner
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+// GAME CONSOLE VISUAL
     internal class MasterMiner
     {
+
+
+
+
+
         private Player player;
 
         public MasterMiner(Player player)
         {
             this.player = player;
         }
+
+
+
+
+
 
         public void Start()
         {
@@ -150,6 +258,11 @@ namespace MasterMiner
             }
         }
 
+
+
+
+
+
         private void UpdateConsole()
         {
             Console.SetCursorPosition(0, 0);
@@ -158,6 +271,13 @@ namespace MasterMiner
             Console.WriteLine("Upgrade Click: C \n Save game: S \n Log out: Q");
             Console.CursorVisible = false;
         }
+
+
+
+
+
+
+
 
 
         private void HandleInput()  // spiel logik
@@ -182,6 +302,18 @@ namespace MasterMiner
                 }
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void OpenUpgradeClickMenu()
         {
@@ -210,6 +342,19 @@ namespace MasterMiner
             }
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void UpgradeClicker()
         {
             // Überprüfen, ob der Spieler genug Ores hat, um das Upgrade zu kaufen
@@ -234,17 +379,53 @@ namespace MasterMiner
         }
 
 
-        private int CalculateUpgradeCost()
-        {
-            // Annahme: Die Kosten steigen linear mit der aktuellen CPS (Clicks pro Sekunde)
-            return player.GetClickValue() * 10;
-        }
+
+
+
+
+
+
+
+
+
+
+private int CalculateUpgradeCost()
+{
+    // Annahme: Die Kosten steigen exponentiell mit der aktuellen CPS (Clicks pro Sekunde)
+    // Die Kosten können angepasst werden, um den gewünschten Exponenten zu erzielen
+    int baseCost = 5; // Grundkosten für das Upgrade
+    int exponent = 2; // Exponent für den Kostenanstieg
+    return (int)(baseCost * Math.Pow(player.GetClickValue(), exponent));
+}
+
+
+
+
+
+
+
+
+
+
 
 
         private async Task SaveGame()
         {
             // Logik zum Speichern des Spiels
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void ExitGame()
         {
