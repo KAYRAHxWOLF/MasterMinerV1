@@ -30,8 +30,8 @@ V V V V V V V V V V V V V V V V V V V V V
 ```mermaid
 classDiagram
     class Player {
-        - String playerName
-        - int totalOres
+        + String playerName
+        + int totalOres
         - int clickValue
         - int totalClicks
         - List<Upgrade> upgrades
