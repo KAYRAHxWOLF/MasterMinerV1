@@ -266,6 +266,7 @@ internal class Database
         private void UpdateConsole()
         {
             Console.SetCursorPosition(0, 0);
+            Console.WriteLine($"Player:{player.playerName}");
             Console.WriteLine($"Total Ores: {player.GetTotalOres()}      CPS: {player.GetClickValue()}");
             Console.WriteLine("########################################################");
             Console.WriteLine("Upgrade Click: C \n Save game: S \n Log out: Q");
