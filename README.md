@@ -35,28 +35,14 @@ classDiagram
         - int clickValue
         - int totalClicks
         - List<Upgrade> upgrades
-        + Player(playerName: String)
-        + clickMine(): void
-        + getClickValue(): int
-        + purchaseUpgrade(upgrade: Upgrade): void
     }
     class Upgrade {
         - String upgradeName
         - int upgradeCost
         - int clickValueIncrease
-        + Upgrade(upgradeName: String, upgradeCost: int, clickValueIncrease: int,)
-        + getUpgradeName(): String
-        + getUpgradeCost(): int
-        + getClickValueIncrease(): int
-    }
-      class Database { 
-      + Database() 
-      + savePlayerData(player: Player): void 
-      + loadPlayerData(playerName: String, password: String): Player
     }
 
-    Player "1" --> "*" Upgrade : owns
-    Database "1" --> "0..*" Player : contains
+    Player "1" --> "0..*" Upgrade
 ```
 
 
