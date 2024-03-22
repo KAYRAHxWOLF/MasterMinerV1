@@ -56,7 +56,7 @@ classDiagram
     }
 
     Player "1" --> "*" Upgrade : owns
-    Database "1" --> "1" Player : contains
+    Database "1" --> "0..*" Player : contains
 ```
 
 
