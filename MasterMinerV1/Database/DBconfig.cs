@@ -10,12 +10,28 @@ namespace MasterMinerV1.Database
 {
     internal class DBconfig : DbContext
     {
-        public DbSet<> entity { get; set; } = null!;
-        public DbSet<> entities { get; set; } = null!;
+        public DbSet<Player> Players { get; set; } = null!;
+        public DbSet<Upgrade> Upgrades { get; set; } = null!;
+        public DbSet<Link> Links { get; set; } = null!;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<entity>().HasKey(A => A.id);
-            modelBuilder.Entity<entities>().HasKey(B => B.id);
+            modelBuilder.Entity<Player>()
+                .HasKey(p => p.Id);
+            modelBuilder.Entity<Link>()
+                .HasKey(l => l.Id);
+            modelBuilder.Entity<Upgrade>()
+                .HasKey(u => u.Id);
+            modelBuilder.Entity<Link>()
+                .HasOne(l => l.player)
+                .WithMany(p => p.Links)
+                .HasForeignKey(p => p.playerId)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Link>()
+                .HasOne(l => l.upgrade)
+                .WithMany()
+                .HasForeignKey(l => l.upgradeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -24,7 +40,7 @@ namespace MasterMinerV1.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite($@"Data Source={Directory.GetCurrentDirectory()}\Database\DB.db");
+                optionsBuilder.UseSqlite($@"Data Source={Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\source\repos\MasterMinerV1\MasterMinerV1\Database\Database.db");
             }
             base.OnConfiguring(optionsBuilder);
         }
