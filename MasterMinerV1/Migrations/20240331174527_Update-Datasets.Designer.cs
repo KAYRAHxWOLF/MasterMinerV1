@@ -2,6 +2,7 @@
 using MasterMinerV1.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MasterMinerV1.Migrations
 {
     [DbContext(typeof(DBconfig))]
-    partial class DBconfigModelSnapshot : ModelSnapshot
+    [Migration("20240331174527_Update-Datasets")]
+    partial class UpdateDatasets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.27");
@@ -22,21 +24,8 @@ namespace MasterMinerV1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("clickval")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("increasePercent")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("owned")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("playerId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("price")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<int>("upgradeId")
                         .HasColumnType("INTEGER");
@@ -56,18 +45,16 @@ namespace MasterMinerV1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ClickVal")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("ClickVal")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("GameSlot")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Ores")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Ores")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<long>("TotalClicks")
+                    b.Property<int>("TotalClicks")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -107,7 +94,7 @@ namespace MasterMinerV1.Migrations
                     b.HasOne("MasterMinerV1.Database.Player", "player")
                         .WithMany("Links")
                         .HasForeignKey("playerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MasterMinerV1.Database.Upgrade", "upgrade")
