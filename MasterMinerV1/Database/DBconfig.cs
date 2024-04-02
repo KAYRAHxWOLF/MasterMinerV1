@@ -26,21 +26,11 @@ namespace MasterMinerV1.Database
                 .HasIndex(p => p.GameSlot)
                 .IsUnique();
             //Delete Behavior
-            modelBuilder.Entity<Link>()
+            /*modelBuilder.Entity<Link>()
                 .HasOne(l => l.player)
                 .WithMany(p => p.Links)
                 .HasForeignKey(l => l.playerId)
-                .OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<Link>()
-                .HasOne(l => l.upgrade)
-                .WithMany()
-                .HasForeignKey(l => l.upgradeId)
-                .OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<Link>()
-                .HasOne(l => l.player)
-                .WithMany(p => p.Links)
-                .HasForeignKey(p => p.playerId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);*/
 
             base.OnModelCreating(modelBuilder);
         }

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Numerics;
 using MasterMinerV1.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace MasterMiner
 {
@@ -101,7 +102,10 @@ namespace MasterMiner
                 }
                 public static Player CreateLoad(int gameslot)
                 {
-                    Player player = db.Players.FirstOrDefault(p => p.GameSlot == gameslot);
+                    Player player = db.Players
+                        .Include(p => p.Links)
+                        .ThenInclude(l => l.upgrade)
+                        .FirstOrDefault(p => p.GameSlot == gameslot);
                     if (player == null)
                     {
                         Console.Clear();
@@ -147,6 +151,10 @@ namespace MasterMiner
                                 case '1':
                                     return player;
                                 case '2':
+                                    foreach (Link link in player.Links)
+                                    {
+                                        player.Links.Remove(link);
+                                    }
                                     db.Players.Remove(player);
                                     db.SaveChanges();
                                     return null;
@@ -183,7 +191,11 @@ namespace MasterMiner
                                 playerOres += playerClickVal;
                                 break;
                             case ConsoleKey.M:
+                                player.ClickVal = playerClickVal.ToString();
+                                player.Ores = playerOres.ToString();
                                 player = Shop(player);
+                                playerOres = BigInteger.Parse(player.Ores);
+                                playerClickVal = BigInteger.Parse(player.ClickVal);
                                 break;
                             case ConsoleKey.Escape:
                                 player.ClickVal = playerClickVal.ToString();
@@ -205,13 +217,16 @@ namespace MasterMiner
             {
                 BigInteger playerOres = new BigInteger();
                 playerOres = BigInteger.Parse(player.Ores);
+                BigInteger playerClickVal = new BigInteger();
+                playerClickVal = BigInteger.Parse(player.ClickVal);
+                int sel = 0;
+                int i = 0;
                 while (true)
                 {
                     Console.Clear();
                     Console.Write("Shop\nYou have {0} ores avalible\nuse [↑] and [↓] to select [Enter] to buy and [Esc] to exit", playerOres);
-                    int i = 0;
-                    int sel = 1;
                     Link selected = null;
+                    i = 0;
                     if (sel < 1)
                         sel = 1;
                     if (sel > player.Links.Count)
@@ -228,6 +243,7 @@ namespace MasterMiner
                             Console.BackgroundColor = ConsoleColor.Black;
                         Console.Write($"\n{link.upgrade.Name} gives {link.clickval} for {link.price}");
                     }
+                    Console.BackgroundColor = ConsoleColor.Black;
                     if (selected == null)
                         Environment.Exit(404);
                     BigInteger selectedPrice = BigInteger.Parse(selected.price);
@@ -237,10 +253,12 @@ namespace MasterMiner
                         case ConsoleKey.Enter:
                             if (playerOres >= selectedPrice)
                             {
-                                player.ClickVal += selected.clickval;
+                                playerClickVal += selected.clickval;
                                 playerOres -= selectedPrice;
                                 selectedPrice += selectedPrice / 100 * selected.increasePercent;
+                                selected.owned++;
                                 player.Ores = playerOres.ToString();
+                                player.ClickVal = playerClickVal.ToString();
                                 selected.price = selectedPrice.ToString();
                                 db.SaveChanges();
                             }

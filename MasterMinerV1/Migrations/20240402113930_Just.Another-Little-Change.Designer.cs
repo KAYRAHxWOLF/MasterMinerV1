@@ -2,6 +2,7 @@
 using MasterMinerV1.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MasterMinerV1.Migrations
 {
     [DbContext(typeof(DBconfig))]
-    partial class DBconfigModelSnapshot : ModelSnapshot
+    [Migration("20240402113930_Just.Another-Little-Change")]
+    partial class JustAnotherLittleChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.27");
@@ -107,13 +109,13 @@ namespace MasterMinerV1.Migrations
                     b.HasOne("MasterMinerV1.Database.Player", "player")
                         .WithMany("Links")
                         .HasForeignKey("playerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("MasterMinerV1.Database.Upgrade", "upgrade")
                         .WithMany()
                         .HasForeignKey("upgradeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("player");
