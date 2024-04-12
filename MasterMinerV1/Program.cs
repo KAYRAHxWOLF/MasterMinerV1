@@ -25,18 +25,6 @@ namespace MasterMiner
                 player = Scripts.Spielstand.CreateLoad(spielstand);
             } while (player == null);
             Scripts.GameLoop(player);
-
-            //Hauptmenü
-
-
-            //Testcode
-            /*
-            Player player = database.LoadPlayerData("TestPlayer", "password");
-            MasterMiner masterMiner = new MasterMiner(player);
-            masterMiner.Start();
-            BigInteger bbc = new BigInteger();
-            BigInteger.TryParse("564465456456564564564645496148194862864591268659265864125384929516967139765902476871223469082475689734565564654654654564", out bbc);
-        */
         }
         internal class Scripts
         {
