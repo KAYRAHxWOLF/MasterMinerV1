@@ -77,41 +77,36 @@ classDiagram
 
 ```mermaid
 classDiagram
-    class Program {
-        -db: DBconfig
-        +Main(args: string[])
-    }
-    class Scripts {
-        +Config()
-    }
-    class Spielstand {
-        +Auswahl(): int
-        +CreateLoad(gameslot: int): Player
-        +GameLoop(player: Player)
-        +Shop(player: Player)
-    }
-    class Player {
-        -Ores: string
-        -ClickVal: string
-        -Links: List<Link>
-        -GameSlot: int
-    }
-    class DBconfig {
-        +Players: DbSet<Player>
-        +Upgrades: DbSet<Upgrade>
-    }
     class Link {
-        -upgrade: Upgrade
-        -player: Player
-        -price: string
-        -increasePercent: int
-        -clickval: string
+        Id: int
+        player: Player
+        playerId: int
+        upgrade: Upgrade
+        upgradeId: int
+        price: string
+        owned: int
+        increasePercent: int
+        clickval: int
     }
+
+    class Player {
+        Id: int
+        GameSlot: int
+        Ores: string
+        ClickVal: string
+        TotalClicks: long
+        Links: ICollection<Link>
+    }
+
     class Upgrade {
-        -Id: int
-        -Name: string
-        -Cost: int
-        -IncreasePercent: int
-        -ClickVal: string
+        Id: int
+        Name: string
+        Cost: int
+        ClickVal: int
+        IncreasePercent: int
     }
+
+    Link "1" -- "0..1" Player : player
+    Link "1" -- "0..1" Upgrade : upgrade
+
 ```
