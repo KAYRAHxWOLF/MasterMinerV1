@@ -106,7 +106,7 @@ classDiagram
         IncreasePercent: int
     }
 
-    Link "1" -- "0..1"
-    Link "1" -- "0..1"
+    Link "1" -- "0..1" Player
+    Link "1" -- "0..1" Upgrade
 
 ```
