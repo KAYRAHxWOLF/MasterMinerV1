@@ -83,6 +83,7 @@ classDiagram
     }
     class Scripts {
         +Config()
+}
         class Spielstand {
             +Auswahl(): int
             +CreateLoad(gameslot: int): Player
