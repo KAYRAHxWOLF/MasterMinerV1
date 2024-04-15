@@ -83,11 +83,10 @@ classDiagram
     }
     class Scripts {
         +Config()
-}
-        class Spielstand {
-            +Auswahl(): int
-            +CreateLoad(gameslot: int): Player
-        }
+    }
+    class Spielstand {
+        +Auswahl(): int
+        +CreateLoad(gameslot: int): Player
         +GameLoop(player: Player)
         +Shop(player: Player)
     }
