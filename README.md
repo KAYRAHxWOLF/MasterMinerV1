@@ -66,3 +66,52 @@ classDiagram
         + loadPlayerData(playerId: int): Player
     }
 ```
+
+
+
+
+
+
+
+□□□□□□□□□□□□□□□□□□
+
+```mermaid
+classDiagram
+    class Program {
+        -db: DBconfig
+        +Main(args: string[])
+    }
+    class Scripts {
+        +Config()
+        class Spielstand {
+            +Auswahl(): int
+            +CreateLoad(gameslot: int): Player
+        }
+        +GameLoop(player: Player)
+        +Shop(player: Player)
+    }
+    class Player {
+        -Ores: string
+        -ClickVal: string
+        -Links: List<Link>
+        -GameSlot: int
+    }
+    class DBconfig {
+        +Players: DbSet<Player>
+        +Upgrades: DbSet<Upgrade>
+    }
+    class Link {
+        -upgrade: Upgrade
+        -player: Player
+        -price: string
+        -increasePercent: int
+        -clickval: string
+    }
+    class Upgrade {
+        -Id: int
+        -Name: string
+        -Cost: int
+        -IncreasePercent: int
+        -ClickVal: string
+    }
+```
