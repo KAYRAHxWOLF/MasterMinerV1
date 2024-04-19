@@ -107,6 +107,6 @@ classDiagram
     }
 
     Link "0..*" <-- "1" Player
-    Link "0..*" --> "1" Upgrade
+    Link "1" --> "1" Upgrade
 
 ```
