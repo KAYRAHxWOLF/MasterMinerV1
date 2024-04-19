@@ -48,6 +48,7 @@ classDiagram
 **Main Data structure UML:**
 
 ############################################
+
 OLD
 
 ```mermaid
@@ -75,7 +76,7 @@ classDiagram
 
 
 □□□□□□□□□□□□□□□□□□
-
+Current!
 ```mermaid
 classDiagram
     class Link {
